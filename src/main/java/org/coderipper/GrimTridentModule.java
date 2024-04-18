@@ -64,7 +64,7 @@ public class GrimTridentModule extends ToggleableModule {
 		}
 	}
 
-	@Subscribe(stage = Stage.PRE)
+	@Subscribe(stage = Stage.ON)
 	public void tick(EventUpdate event) {
 		if (tick <= 0) {
 			if (tridentDelay.getValue() != 0)

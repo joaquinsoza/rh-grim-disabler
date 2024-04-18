@@ -1,8 +1,8 @@
 {
-  "Plugin-Class": "org.example.ExamplePlugin",
-  "Name": "Example Plugin",
+  "Plugin-Class": "org.coderipper.GrimTridentPlugin",
+  "Name": "Grim Trident",
   "Version": "${plugin_version}",
-  "Description": "Example rusherhack plugin",
-  "Authors": ["John200410"],
+  "Description": "Just move fast",
+  "Authors": ["coderipper"],
   "Minecraft-Versions": ["1.20.1", "1.20.2", "1.20.3", "1.20.4"]
 }

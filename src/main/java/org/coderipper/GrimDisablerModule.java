@@ -41,7 +41,7 @@ public class GrimDisablerModule extends ToggleableModule {
 	 * Constructor
 	 */
 	public GrimDisablerModule() {
-		super("Grim Disabler", "Grim Disabler by coderipper", ModuleCategory.MOVEMENT);
+		super("GrimDisabler", "Grim Disabler by coderipper", ModuleCategory.MOVEMENT);
 		
 		this.registerSettings(
 				this.tridentDelay,

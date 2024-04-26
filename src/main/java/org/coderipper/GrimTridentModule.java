@@ -1,14 +1,15 @@
 package org.coderipper;
 
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.protocol.game.ServerboundSetCarriedItemPacket;
+import net.minecraft.network.protocol.game.ServerboundUseItemPacket;
 import net.minecraft.util.Mth;
 import net.minecraft.network.protocol.game.ServerboundPlayerActionPacket;
-import net.minecraft.network.Connection;
 import org.rusherhack.client.api.events.client.EventUpdate;
 import org.rusherhack.client.api.feature.module.ModuleCategory;
 import org.rusherhack.client.api.feature.module.ToggleableModule;
@@ -71,17 +72,16 @@ public class GrimTridentModule extends ToggleableModule {
 				tick = tridentDelay.getValue();
 
 			int tridentSlot = InventoryUtils.findItemHotbar(Items.TRIDENT);
-			// int oldSlot = mc.player.getInventory().selected;
+			int oldSlot = mc.player.getInventory().selected;
 
 			if (tridentSlot == -1 || (pauseOnEat.getValue() && mc.player.isUsingItem())) {
 				ChatUtils.print("There's not a Trident in your hotbar");
 				return;
 			}
 			
-			
-			mc.player.getInventory().selected = tridentSlot;
-			// mc.player.connection.send(new ServerboundSetCarriedItemPacket(tridentSlot));
-			// mc.player.connection.send(new ServerboundPlayerActionPacket(ServerboundPlayerActionPacket.Action.RELEASE_USE_ITEM, BlockPos.ZERO, Direction.DOWN));
+			mc.player.connection.send(new ServerboundSetCarriedItemPacket(tridentSlot));
+			mc.player.connection.send(new ServerboundUseItemPacket(InteractionHand.MAIN_HAND, 0));
+			mc.player.connection.send(new ServerboundPlayerActionPacket(ServerboundPlayerActionPacket.Action.RELEASE_USE_ITEM, BlockPos.ZERO, Direction.DOWN));
 
 			if (!grimDisable.getValue()) {
 				float f = mc.player.getYRot();
@@ -101,7 +101,7 @@ public class GrimTridentModule extends ToggleableModule {
 				}
 			}
 
-			// mc.player.connection.send(new ServerboundSetCarriedItemPacket(oldSlot));
+			mc.player.connection.send(new ServerboundSetCarriedItemPacket(oldSlot));
 
 		} else {
 			tick--;

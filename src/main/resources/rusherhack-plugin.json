@@ -1,6 +1,6 @@
 {
-  "Plugin-Class": "org.coderipper.GrimTridentPlugin",
-  "Name": "Grim Trident",
+  "Plugin-Class": "org.coderipper.GrimDisablerPlugin",
+  "Name": "Grim Disabler",
   "Version": "${plugin_version}",
   "Description": "Just move fast",
   "Authors": ["coderipper"],

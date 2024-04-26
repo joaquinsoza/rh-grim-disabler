@@ -25,7 +25,7 @@ import org.rusherhack.core.setting.NumberSetting;
  *
  * @author coderipper
  */
-public class GrimTridentModule extends ToggleableModule {
+public class GrimDisablerModule extends ToggleableModule {
 	
 	/**
 	 * Settings
@@ -40,8 +40,8 @@ public class GrimTridentModule extends ToggleableModule {
 	/**
 	 * Constructor
 	 */
-	public GrimTridentModule() {
-		super("Grim Trident", "Grim Trident by coderipper", ModuleCategory.CLIENT);
+	public GrimDisablerModule() {
+		super("Grim Disabler", "Grim Disabler by coderipper", ModuleCategory.MOVEMENT);
 		
 		this.registerSettings(
 				this.tridentDelay,
@@ -74,10 +74,7 @@ public class GrimTridentModule extends ToggleableModule {
 			int tridentSlot = InventoryUtils.findItemHotbar(Items.TRIDENT);
 			int oldSlot = mc.player.getInventory().selected;
 
-			if (tridentSlot == -1 || (pauseOnEat.getValue() && mc.player.isUsingItem())) {
-				ChatUtils.print("There's not a Trident in your hotbar");
-				return;
-			}
+			if (tridentSlot == -1 || (pauseOnEat.getValue() && mc.player.isUsingItem())) return;
 			
 			mc.player.connection.send(new ServerboundSetCarriedItemPacket(tridentSlot));
 			mc.player.connection.send(new ServerboundUseItemPacket(InteractionHand.MAIN_HAND, 0));

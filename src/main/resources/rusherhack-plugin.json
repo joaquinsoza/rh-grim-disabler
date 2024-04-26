@@ -4,5 +4,5 @@
   "Version": "${plugin_version}",
   "Description": "Just move fast",
   "Authors": ["coderipper"],
-  "Minecraft-Versions": ["1.20.1", "1.20.2", "1.20.3", "1.20.4"]
+  "Minecraft-Versions": ["1.20.4"]
 }
